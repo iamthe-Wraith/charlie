@@ -1,0 +1,15 @@
+{
+  "name": "charlie",
+  "version": "1.0.0",
+  "description": "a cli for random things",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "charlie"
+  ],
+  "author": "iamthe-Wraith",
+  "license": "GPL-3.0"
+}
