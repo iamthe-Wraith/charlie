@@ -4,6 +4,8 @@
   "description": "a cli for random things",
   "main": "src/index.ts",
   "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
