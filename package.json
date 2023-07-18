@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "a cli for random things",
   "main": "src/index.ts",
+  "bin": {
+    "@iamthe-Wraith/charlie": "bin/charlie",
+    "charlie": "bin/charlie"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",
@@ -20,5 +27,8 @@
     "@typescript-eslint/parser": "^6.1.0",
     "eslint": "^8.45.0",
     "eslint-plugin-unused-imports": "^3.0.0"
+  },
+  "dependencies": {
+    "esm": "^3.2.25"
   }
 }
