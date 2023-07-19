@@ -1,7 +1,5 @@
 import arg, { Result } from 'arg';
 
-
-
 export class Parser {
   private _args: Result<arg.Spec> | null = null;
   private _config: arg.Spec;
