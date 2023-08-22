@@ -17,10 +17,14 @@ export function cli(args: [string, string, string, ...string[]]) {
     },
   };
 
-  if (ctx.command === null ||
-    (ctx.command !== '--version' && ctx.command !== '-v' && !commands.has(ctx.command))
+  if (ctx.command === null) {
+    Logger.error('no command provided');
+    process.exit(1);
+  }
+  
+  if ((ctx.command !== '--version' && ctx.command !== '-v' && !commands.has(ctx.command))
   ) {
-    Logger.error('\n[-] invalid command\n');
+    Logger.error('invalid command');
     process.exit(1);
   }
 
@@ -38,8 +42,7 @@ export function cli(args: [string, string, string, ...string[]]) {
       if ('preventCompletion' in ctx && ctx.preventCompletion) {
         return ctx;
       } else {
-        // return Process.complete(ctx);
-        Logger.log('complete...need to do some cleanup here...');
+        // do some cleanup here
       }
     })
     .catch((err: Error) => {

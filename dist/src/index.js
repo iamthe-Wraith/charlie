@@ -13,9 +13,12 @@ export function cli(args) {
             parameters: {},
         },
     };
-    if (ctx.command === null ||
-        (ctx.command !== '--version' && ctx.command !== '-v' && !commands.has(ctx.command))) {
-        Logger.error('\n[-] invalid command\n');
+    if (ctx.command === null) {
+        Logger.error('no command provided');
+        process.exit(1);
+    }
+    if ((ctx.command !== '--version' && ctx.command !== '-v' && !commands.has(ctx.command))) {
+        Logger.error('invalid command');
         process.exit(1);
     }
     const command = (ctx.command === '--version' || ctx.command === '-v')
@@ -32,8 +35,7 @@ export function cli(args) {
             return ctx;
         }
         else {
-            // return Process.complete(ctx);
-            Logger.log('complete...need to do some cleanup here...');
+            // do some cleanup here
         }
     })
         .catch((err) => {
