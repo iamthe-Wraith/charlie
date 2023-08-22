@@ -1,5 +1,11 @@
 export class Command {
     constructor(parser) {
+        Object.defineProperty(this, "config", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: null
+        });
         Object.defineProperty(this, "parser", {
             enumerable: true,
             configurable: true,
@@ -10,7 +16,8 @@ export class Command {
     }
     get args() { return this.parser.args; }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    exec(args) {
+    exec(args, config) {
+        this.config = config;
         this.parser.parseArgumentsIntoOptions(args);
         return this.execCommand();
     }

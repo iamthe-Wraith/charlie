@@ -1,4 +1,4 @@
-import { random } from './random';
+import { review } from './review';
 export const commands = {
-    random,
+    review,
 };
