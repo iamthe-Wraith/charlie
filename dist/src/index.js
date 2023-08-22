@@ -26,10 +26,7 @@ export function cli(args) {
         ctx.config = config;
         return import(`./commands/${command}`);
     })
-        .then((module) => {
-        console.log('module: ', module);
-        return module.exec(ctx);
-    })
+        .then((module) => module.exec(ctx))
         .then((ctx) => {
         if ('preventCompletion' in ctx && ctx.preventCompletion) {
             return ctx;

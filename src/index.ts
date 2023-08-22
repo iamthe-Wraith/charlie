@@ -33,10 +33,7 @@ export function cli(args: [string, string, string, ...string[]]) {
       ctx.config = config;
       return import(`./commands/${command}`);
     })
-    .then((module: any) => {
-      console.log('module: ', module);
-      return module.exec(ctx);
-    })
+    .then((module: any) => module.exec(ctx))
     .then((ctx: IContext) => {
       if ('preventCompletion' in ctx && ctx.preventCompletion) {
         return ctx;
