@@ -3,19 +3,17 @@ import { Logger } from '../lib/logger';
 import { Parser } from '../lib/parser';
 import { IContext } from '../types';
 
-interface IProps {
+export interface ICommandProps {
   pattern: string;
   docs?: string;
 }
 
-export abstract class Command {
+export class Command {
   name: string;
   parser: Parser;
   docs: string | null;
 
-  abstract arguments: IArguments;
-
-  constructor (props: IProps) {
+  constructor (props: ICommandProps) {
     const {
       pattern = '',
       docs = null
@@ -69,8 +67,6 @@ export abstract class Command {
       resolve(ctx);
     });
   }
-
-  abstract exec(ctx: IContext): Promise<IContext>;
 
   /**
    * the primary method to call to execute the command

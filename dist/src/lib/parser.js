@@ -241,7 +241,7 @@ export class Parser {
                         throw new FatalError(`no value passed to ${i}`);
                     }
                     if (typeof this.arguments[arg].validate === 'function') {
-                        if (this.arguments[arg].validate?.(castedValue)) {
+                        if (this.arguments[arg].validate(castedValue)) {
                             parsed[arg.split('-').join('')] = castedValue;
                         }
                         else {

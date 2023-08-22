@@ -10,8 +10,8 @@ export interface IConfig {
 
 export interface IContext {
   args: string[];
-  arguments?: IArguments;
+  arguments: IArguments;
   command: string | null;
-  config: IConfig;
+  config?: IConfig;
   namespace: string;
 }
