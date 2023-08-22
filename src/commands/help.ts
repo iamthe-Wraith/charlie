@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { IContext } from '../types';
 import { Command } from './command';
-import { commands } from '../commands';
+import { commands } from '.';
 import { FatalError } from '../lib/error';
 import { Logger } from '../lib/logger';
 
@@ -54,7 +54,7 @@ class HelpCommand extends Command {
     Logger.log('charlie help -c [commandName]\n');
   
     commands.forEach(cmd => {
-      if (cmd !== 'test') {
+      if (cmd !== 'test' && cmd !== 'printversion') {
         Logger.log(`  ${cmd}`);
       }
     });
