@@ -8,7 +8,7 @@ class ReviewCommand extends Command {
         super({
             pattern: '<review> <directory>',
             docs: `
-        Retrieves a list of N filenames within the provided directory.`
+        Retrieves a list of N random filenames within the provided directory to be reviewed.`
         });
         Object.defineProperty(this, "main", {
             enumerable: true,
@@ -43,10 +43,10 @@ class ReviewCommand extends Command {
         });
         this.argument('count|c', {
             type: 'int',
-            description: `the number of filenames to retrieve. (defaults to ${DefaultFilesCount})`
+            description: `the number of random filenames to retrieve. (defaults to ${DefaultFilesCount})`
         });
         this.parameter('directory', {
-            description: 'the alias for the directory to retrieve filenames from. see dirAliases in ~/.charlie to configure aliases.'
+            description: 'the alias for the directory to retrieve random filenames from. see dirAliases in ~/.charlie to configure aliases.'
         });
     }
 }
