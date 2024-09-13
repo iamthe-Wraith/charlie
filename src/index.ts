@@ -34,11 +34,16 @@ export function cli(args: [string, string, string, ...string[]]) {
 
   getConfig()
     .then(config => {
+      console.log('config loaded...importing command');
       ctx.config = config;
       return import(`./commands/${command}`);
     })
-    .then((module: any) => module.exec(ctx))
+    .then((module: any) => {
+      console.log('executing module');
+      return module.exec(ctx);
+    })
     .then((ctx: IContext) => {
+      console.log('cleaning up');
       if ('preventCompletion' in ctx && ctx.preventCompletion) {
         return ctx;
       } else {
@@ -46,7 +51,7 @@ export function cli(args: [string, string, string, ...string[]]) {
       }
     })
     .catch((err: Error) => {
-      Logger.error(err.message);
+      Logger.error(err);
 
       if (err instanceof FatalError) process.exit(1);
     });

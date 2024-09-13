@@ -6,6 +6,7 @@ interface IArguments {
 
 export interface IConfig {
   dirAliases: Record<string, string>;
+  apiKeys: Record<string, string>;
 }
 
 export interface IContext {

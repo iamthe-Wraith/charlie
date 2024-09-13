@@ -18,7 +18,7 @@ class CreateTokenCommand extends Command {
                 for (let i = 0; i < length; i++) {
                     token += chars[Math.floor(Math.random() * chars.length)];
                 }
-                Logger.log('New Token Generated:');
+                Logger.log('\nNew Token Generated:');
                 Logger.log(token);
                 return ctx;
             }

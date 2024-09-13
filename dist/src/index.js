@@ -26,11 +26,16 @@ export function cli(args) {
         : ctx.command;
     getConfig()
         .then(config => {
+        console.log('config loaded...importing command');
         ctx.config = config;
         return import(`./commands/${command}`);
     })
-        .then((module) => module.exec(ctx))
+        .then((module) => {
+        console.log('executing module');
+        return module.exec(ctx);
+    })
         .then((ctx) => {
+        console.log('cleaning up');
         if ('preventCompletion' in ctx && ctx.preventCompletion) {
             return ctx;
         }
@@ -39,7 +44,7 @@ export function cli(args) {
         }
     })
         .catch((err) => {
-        Logger.error(err.message);
+        Logger.error(err);
         if (err instanceof FatalError)
             process.exit(1);
     });
